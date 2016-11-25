@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<!--
+Created using JS Bin
+http://jsbin.com
+
+Copyright (c) 2016 by porkermahony (http://jsbin.com/yozuze/2/edit)
+
+Released under the MIT license: http://jsbin.mit-license.org
+-->
+<meta name="robots" content="noindex">
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <link href="https://fonts.googleapis.com/css?family=Ravi+Prakash" rel="stylesheet">
+  <title>Clock</title>
+<style id="jsbin-css">
+html, body
+{
+  height: 100%;
+  font-family: 'Ravi Prakash', cursive;
+}
+
+*
+{
+  margin: 0;
+  padding: 0;
+}
+
+#clock
+{
+  top: 50%;
+  position: relative;
+  text-align: center;
+  font-size: 50px;
+  margin-top: -25px;
+}
+
+</style>
+</head>
+<body>
+  <div id="clock"> Színes másodpercek </div>
+<script id="jsbin-javascript">
+function colorClock()
+{
+  var date = new Date();
+  var hours = date.getHours();
+  var minutes = date.getMinutes();
+  var seconds = date.getSeconds();
+
+  if( hours < 10 )
+  {
+    hours = '0' +hours;
+  }
+  if( minutes < 10 )
+  {
+    minutes = '0' +minutes;
+  }
+  if( seconds < 10 )
+  {
+    seconds = '0' +seconds;
+  }
+
+  var clockFace = (hours+':'+minutes+':'+seconds);
+  //var hexColor = '#' + hours + minutes + seconds;
+
+
+  document.getElementById('clock').innerHTML = clockFace;
+  //document.body.style.background = hexColor;
+  
+  setTimeout(function()
+  {
+    colorClock();
+  },1000);
+}
+
+var color2 = 111111;
+var color = '#' +color2;
+
+function colorChange()
+{
+  document.body.style.background = color;
+  color2 = color2+7345;
+  if(color2 >= 999999)
+  {
+    color2 = 111111;
+  }
+  color = '#' +color2;
+  setTimeout(function()
+  {
+    colorChange();
+  },1000);
+}
+
+colorChange();
+colorClock();
+</script>
+</body>
+</html>
